@@ -1,14 +1,10 @@
 package lemondasidij;
-/*
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-*/
+
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import java.util.Scanner;
+
 public class LemondasiDij {
 
     public static void main(String[] args) {
@@ -17,18 +13,18 @@ public class LemondasiDij {
         DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy.MM.dd.");
         System.out.print("Kérem az érkezés napját (yyyy.MM.dd. formátumban)! ");
         String input = sc.nextLine();
-        DateTime er;
-        
+        DateTime erk;
+
         try {
-            er = dtf.parseDateTime(input);
-        } catch (IllegalArgumentException ex){
+            erk = dtf.parseDateTime(input);
+        } catch (IllegalArgumentException ex) {
             System.out.println("Nem megfelelő formátum.");
             return;
-    }
-        DateTime erkezes= er.withTimeAtStartOfDay();
+        }
+        DateTime erkezes = erk.withTimeAtStartOfDay();
         Szallas foglalas = new Szallas(erkezes);
-        int szazalek=foglalas.getVisszajaroSzazalek(most);
-        System.out.println(szazalek+"% jár vissza.");
-       
+        int szazalek = foglalas.getVisszajaroSzazalek(most);
+        System.out.println(szazalek + "% jár vissza.");
+
     }
 }
